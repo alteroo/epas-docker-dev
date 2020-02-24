@@ -5,7 +5,7 @@ services:
     env_file:
       - database.env # configure postgres
     volumes:
-      - database-data:./data/ # persist data even if container shuts down
+      - database-data:${PWD}/data/ # persist data even if container shuts down
 
   icd11:
     image: whoicd/icd11_sw_1904_mms_en
