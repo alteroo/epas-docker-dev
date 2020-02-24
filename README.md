@@ -16,6 +16,21 @@ Take a look at https://github.com/alteroo/trytond_health_icd11
 mkdir -p data
 docker-compose up -d
 ```
+#### monitoring
+To see running processes inside the container, use `docker-compose top`
+```
+docker-compose top
+```
+You know it is running when elastic search has started, you'll see output like this:
+```
+3145   1000   0:56   /usr/bin/java -Xms256m -Xmx1g -Djava.awt.headless=true -XX:+UseParNewGC                
+                     -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=75                          
+                     -XX:+UseCMSInitiatingOccupancyOnly -XX:+HeapDumpOnOutOfMemoryError                     
+                     -XX:+DisableExplicitGC -Dfile.encoding=UTF-8 -Djna.nosys=true -Xms2g -Xmx2g            
+                     -Des.path.home=/usr/share/elasticsearch -cp                                            
+                     /usr/share/elasticsearch/lib/elasticsearch-2.4.4.jar:/usr/share/elasticsearch/lib/*    
+                     org.elasticsearch.bootstrap.Elasticsearch start  
+```
 #### Stopping
 ```
 docker-compose down
