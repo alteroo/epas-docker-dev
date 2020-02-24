@@ -1,0 +1,18 @@
+version: '3'
+services:
+  database:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - database.env # configure postgres
+    volumes:
+      - database-data:./data/ # persist data even if container shuts down
+
+  icd11:
+    image: whoicd/icd11_sw_1904_mms_en
+    ports:
+     - "7654:80"
+    env_file:
+    - icd.env
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
